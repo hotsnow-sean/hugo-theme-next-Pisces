@@ -1,0 +1,17 @@
+<div class="tag-cloud">
+  <div class="tag-cloud-title">
+    {{ i18n "counter.tag_cloud" (len .Data.Terms) }}
+  </div>
+  <div class="tag-cloud-tags">
+    {{ $min_font := 12.0 }}
+    {{ $max_font := 30.0 }}
+    {{ $font_range := (sub $max_font $min_font) }}
+    {{ $cnt_range := (add (index .Data.Terms.ByCount 0).Count 0.0) }}
+    {{ range .Data.Terms.Alphabetical }}
+    {{ $rate := (div .Count $cnt_range) }}
+    {{ $id := (math.Floor (mul $rate 10)) }}
+    {{ $size := (add $min_font (mul $font_range $rate)) }}
+    <a href="{{ .Page.Permalink }}" style="font-size: {{ $size }}px;" class="tag-cloud-{{- $id }}">{{ .Page.Title }}</a>
+    {{ end }}
+  </div>
+</div>

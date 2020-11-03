@@ -1,0 +1,389 @@
+.sidebar-inner {
+  color: $grey-dark;
+  padding: $sidebar-padding 10px;
+  text-align: center;
+}
+
+.site-overview-item:not(:first-child) {
+  margin-top: 10px;
+}
+
+.cc-license {
+  .cc-opacity {
+    border-bottom: none;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  img {
+    display: inline-block;
+  }
+}
+
+// author
+.site-author-image {
+  border: $site-author-image-border-width solid $site-author-image-border-color;
+  max-width: $site-author-image-width;
+  padding: 2px;
+
+  border-radius: 50%;
+
+  transition: transform 1s ease-out;
+
+  &:hover {
+    transform: rotateZ(360deg);
+  }
+}
+
+.site-author-name {
+  color: $site-author-name-color;
+  font-weight: $site-author-name-weight;
+  margin: $site-author-name-margin;
+}
+
+.site-description {
+  color: $site-description-color;
+  font-size: $site-description-font-size;
+  margin-top: $site-description-margin-top;
+}
+
+// author-link
+.links-of-author {
+  a,
+  span.exturl {
+    font-size: $font-size-smaller;
+  }
+}
+
+// button
+.sidebar .sidebar-button {
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+
+  a {
+    border: 1px solid $orange;
+    border-radius: 4px;
+    color: $orange;
+    display: inline-block;
+    padding: 0 15px;
+
+    .fa,
+    .fab,
+    .far,
+    .fas {
+      margin-right: 5px;
+    }
+
+    &:hover {
+      background: $orange;
+      border: 1px solid $orange;
+      color: white;
+
+      .fa,
+      .fab,
+      .far,
+      .fas {
+        color: white;
+      }
+    }
+  }
+}
+
+// blogroll
+.links-of-blogroll {
+  font-size: $font-size-smaller;
+}
+
+.links-of-blogroll-title {
+  font-size: $font-size-small;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.links-of-blogroll-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// dimmer
+.sidebar-dimmer {
+  display: none;
+}
+
+@include mobile() {
+  .sidebar-dimmer {
+    background: black;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: visibility 0.4s, opacity 0.4s;
+    visibility: hidden;
+    width: 100%;
+    z-index: $zindex-1;
+
+    .sidebar-active & {
+      opacity: 0.7;
+      visibility: visible;
+    }
+  }
+}
+
+// Sidebar Navigation
+.sidebar-nav {
+  display: none;
+  margin: 0;
+  padding-bottom: 20px;
+  padding-left: 0;
+
+  .sidebar-nav-active & {
+    display: block;
+  }
+
+  li {
+    border-bottom: 1px solid transparent;
+    color: $sidebar-nav-color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $font-size-small;
+
+    &.sidebar-nav-overview {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      color: $sidebar-nav-hover-color;
+    }
+  }
+}
+
+.sidebar-toc-active .sidebar-nav-toc,
+.sidebar-overview-active .sidebar-nav-overview {
+  border-bottom-color: $sidebar-highlight;
+  color: $sidebar-highlight;
+
+  &:hover {
+    color: $sidebar-highlight;
+  }
+}
+
+.sidebar-panel-container {
+  max-height: var(--sidebar-wrapper-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar-panel {
+  display: none;
+}
+
+.sidebar-overview-active .site-overview-wrap {
+  // Flexbox layout makes it possible to reorder the child
+  // elements of .site-overview-item through the `order` CSS property
+  display: flex;
+  @include flex-column;
+}
+
+.sidebar-toc-active .post-toc-wrap {
+  display: block;
+}
+
+// toggle
+.sidebar-toggle {
+  bottom: 45px;
+  height: 12px;
+  padding: 6px 5px;
+  width: 14px;
+  @include sidebar-toggle;
+}
+
+.sidebar-toggle:hover .toggle-line {
+  background: $sidebar-highlight;
+}
+
+// Fix issue #75
+// @extends does not seem to work inside @media
+// So we use a mixin here
+// https://github.com/stylus/stylus/issues/609
+@media (any-hover: hover) {
+  body:not(.sidebar-active) .sidebar-toggle:hover {
+    @include toggle-arrow(right);
+  }
+}
+
+.sidebar-active .sidebar-toggle {
+  @include toggle-close(right);
+}
+
+// toc
+.post-toc {
+  font-size: $font-size-small;
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 2px 5px 10px;
+    text-align: left;
+
+    > ul,
+    > ol {
+      padding-left: 0;
+    }
+
+    a {
+      transition: all $transition-ease;
+    }
+  }
+
+  li {
+    line-height: 1.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #TableOfContents > ul,
+  #TableOfContents > ol {
+    ul,
+    ol {
+      display: none;
+    }
+
+    .active > ul,
+    .active > ol {
+      display: block;
+    }
+
+    .active-current > ul,
+    .active-current > ol {
+      display: block;
+
+      > li {
+        display: block;
+      }
+    }
+
+    .active > a {
+      border-bottom-color: $sidebar-highlight;
+      color: $sidebar-highlight;
+    }
+
+    .active-current > a {
+      color: $sidebar-highlight;
+
+      &:hover {
+        color: $sidebar-highlight;
+      }
+    }
+  }
+}
+
+// state
+.site-state {
+  @include flex-wrap;
+  line-height: 1.4;
+}
+
+.site-state-item {
+  // Fix issue #103
+  // The click area of the link becomes smaller
+  padding: 0 15px;
+
+  a {
+    border-bottom: none;
+    display: block;
+  }
+}
+
+.site-state-item-count {
+  display: block;
+  font-size: $site-state-item-count-font-size;
+  font-weight: 600;
+}
+
+.site-state-item-name {
+  color: $site-state-item-name-color;
+  font-size: $site-state-item-name-font-size;
+}
+
+// theme
+.sidebar {
+  margin-top: $sidebar-offset;
+  position: -webkit-sticky;
+  position: sticky;
+  top: $sidebar-offset;
+  width: $sidebar-desktop;
+
+  @include tablet-mobile {
+    display: none;
+  }
+
+  visibility: hidden;
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.sidebar-inner {
+  background: var(--content-bg-color);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+.site-state-item {
+  padding: 0 10px;
+}
+
+.sidebar .sidebar-button {
+  border-bottom: 1px dotted $grey-light;
+  border-top: 1px dotted $grey-light;
+
+  a {
+    border: 0;
+    color: $orange;
+    display: block;
+
+    &:hover {
+      background: none;
+      border: 0;
+      color: darken($orange, 20%);
+
+      .fa,
+      .fab,
+      .far,
+      .fas {
+        color: darken($orange, 20%);
+      }
+    }
+  }
+}
+
+.links-of-author {
+  @include flex-wrap;
+}
+
+.links-of-author-item {
+  @include sidebar-inline-links-item;
+
+  a,
+  span.exturl {
+    border-bottom: none;
+    border-radius: 4px;
+    display: block;
+
+    &:hover {
+      background: var(--body-bg-color);
+    }
+  }
+}

@@ -1,0 +1,158 @@
+.header-inner {
+  background: var(--content-bg-color);
+  border-radius: $border-radius-inner;
+  box-shadow: $box-shadow-inner;
+  width: $sidebar-desktop;
+
+  @include tablet-mobile() {
+    border-radius: initial;
+    width: auto;
+  }
+}
+
+.main {
+  // Make sure that .header and .main-inner are the same height
+  // Required for .sidebar `position: sticky;`
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  @include main-container;
+
+  @include tablet-mobile() {
+    display: block;
+    width: auto;
+  }
+}
+
+.main-inner {
+  border-radius: $border-radius-inner;
+  box-sizing: border-box;
+  width: $content-wrap;
+
+  @include tablet-mobile() {
+    border-radius: initial;
+    width: 100%;
+  }
+}
+
+.footer-inner {
+  padding-left: $sidebar-desktop + $sidebar-offset;
+
+  @include tablet-mobile() {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+  }
+}
+
+// Post blocks.
+.main-inner > {
+  .sub-menu,
+  .post-block,
+  .tabs-comment,
+  .comments,
+  .pagination {
+    background: var(--content-bg-color);
+    border-radius: $border-radius-inner;
+    box-shadow: $box-shadow-inner;
+
+    &:not(:first-child):not(.sub-menu) {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      margin-top: $sidebar-offset;
+
+      @include tablet {
+        margin-top: $content-tablet-padding;
+      }
+
+      @include mobile {
+        margin-top: $content-mobile-padding;
+      }
+    }
+  }
+}
+
+// Post & Comments blocks.
+.post-block,
+.comments {
+  padding: $content-desktop-padding;
+}
+
+// Post delimiters.
+.post-eof {
+  display: none;
+}
+
+// Pagination.
+.pagination {
+  border-top: initial;
+  padding: 10px 0 10px;
+}
+
+// ==================================================
+// Headers.
+// ==================================================
+.post-body {
+  h1,
+  h2 {
+    border-bottom: 1px solid $body-bg-color;
+  }
+
+  h3 {
+    border-bottom: 1px dotted $body-bg-color;
+  }
+}
+
+// ==================================================
+// > 768px & < 991px
+// ==================================================
+@include tablet() {
+  // Posts in blocks.
+  .main-inner {
+    padding: $content-tablet-padding;
+  }
+
+  .posts-expand {
+    // Components inside Posts.
+    .post-button {
+      margin-top: ($content-tablet-padding * 2);
+    }
+  }
+
+  .post-block {
+    // Inside posts blocks content padding (default 40px).
+    padding: ($content-tablet-padding * 2);
+  }
+
+  .comments {
+    padding: $content-tablet-padding ($content-tablet-padding * 2);
+    // padding: initial;
+    // padding-top: $content-tablet-padding;
+  }
+}
+
+// ==================================================
+// < 767px
+// ==================================================
+@include mobile() {
+  // Posts in blocks.
+  .main-inner {
+    padding: $content-mobile-padding;
+  }
+
+  .posts-expand {
+    // Components inside Posts.
+    .post-button {
+      margin: $sidebar-offset 0;
+    }
+  }
+
+  .post-block {
+    // Inside posts blocks content padding (default 40px).
+    padding: $sidebar-offset;
+  }
+
+  .comments {
+    padding: 10px $sidebar-offset;
+  }
+}

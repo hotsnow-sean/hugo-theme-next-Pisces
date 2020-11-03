@@ -1,0 +1,104 @@
+# menu
+[home]
+other = "Home"
+[about]
+other = "About"
+[archives]
+other = "Archives"
+[tags]
+other = "Tags"
+[categories]
+other = "Categories"
+[search]
+other = "Search"
+[sitemap]
+other = "Sitemap"
+
+# title
+[archive]
+other = "Archive"
+[tag]
+other = "Tag"
+[category]
+other = "Category"
+
+# state
+[state]
+[state.posts]
+other = "posts"
+[state.tags]
+other = "tags"
+[state.categories]
+other = "categories"
+
+# sidebar
+[overview]
+other = "Overview"
+[toc]
+other = "Table of Contents"
+
+# post
+[posted]
+other = "Posted on"
+[edited]
+other = "Edited on"
+[created]
+other = "Created"
+[modified]
+other = "Modified"
+[in]
+other = "In"
+[read_more]
+other = "Read more"
+[untitled]
+other = "Untitled"
+[sticky]
+other = "Sticky"
+[related_posts]
+other = "Related Posts"
+
+# copyright
+[author]
+other = "Post author"
+[link]
+other = "Post link"
+[post_author]
+other = "Written by"
+[post_link]
+other = "This article originally appeared on"
+[license_title]
+other = "Copyright Notice"
+[license_content]
+other = "All articles in this blog are licensed under %s unless stating additionally."
+
+# archive list page cheer text
+[um]
+other="Um.."
+[ok]
+other="OK"
+[nice]
+other="Nice"
+[good]
+other="Good"
+[great]
+other="Great"
+[excellent]
+other="Excellent"
+# archive list page keep on text
+[keep_on]
+other = "Keep on posting."
+
+# counter
+[counter]
+[counter.tag_cloud]
+zero = "No tags"
+one = "1 tag in total"
+other = "%d tags in total"
+[counter.categories]
+zero = "No categories"
+one = "1 category in total"
+other = "%d categories in total"
+[counter.archive_posts]
+zero = "No posts."
+one = "1 post."
+other = "{{ .Count }} posts in total."

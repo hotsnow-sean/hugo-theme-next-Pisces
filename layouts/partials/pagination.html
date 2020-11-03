@@ -1,0 +1,21 @@
+{{ if or .HasPrev .HasNext -}}
+<nav class="pagination">
+  {{ if .HasPrev -}}
+  <a href="{{ .Prev.URL }}" class="extend prev" rel="prev">
+    <i class="fa fa-angle-left"></i>
+  </a>
+  {{ end -}}
+  {{ range .Pagers -}}
+  {{ if eq .PageNumber $.PageNumber -}}
+  <span class="page-number current">{{ .PageNumber }}</span>
+  {{ else -}}
+  <a href="{{ .URL }}" class="page-number">{{ .PageNumber }}</a>
+  {{ end -}}
+  {{ end -}}
+  {{ if .HasNext -}}
+  <a href="{{ .Next.URL }}" class="extend next" rel="next">
+    <i class="fa fa-angle-right"></i>
+  </a>
+  {{ end -}}
+</nav>
+{{ end }}

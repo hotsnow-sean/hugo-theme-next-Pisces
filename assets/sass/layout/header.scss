@@ -1,0 +1,304 @@
+.headband {
+  background: $headband-bg;
+  height: $headband-height;
+
+  @include tablet-mobile {
+    display: none;
+  }
+}
+
+.header {
+  background: $head-bg;
+}
+
+.header-inner {
+  @include main-container;
+}
+
+.site-brand-container {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 10px;
+}
+
+.use-motion {
+  .header,
+  .site-brand-container .toggle {
+    opacity: 0;
+  }
+}
+
+.site-meta {
+  flex-grow: 1;
+  text-align: center;
+  padding: 20px 0;
+
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.custom-logo-image {
+  margin-top: 20px;
+
+  @include tablet-mobile {
+    display: none;
+  }
+}
+
+.brand {
+  border-bottom: none;
+  color: var(--brand-color);
+  display: inline-block;
+  padding: 0;
+
+  &:hover {
+    color: var(--brand-hover-color);
+  }
+}
+
+.site-title {
+  font-family: $font-family-logo;
+  font-size: $font-size-title;
+  font-weight: normal;
+  margin: 0;
+}
+
+.site-subtitle {
+  color: $subtitle-color;
+  font-size: $font-size-subtitle;
+  margin: 10px 10px 0;
+}
+
+.use-motion {
+  .site-title,
+  .site-subtitle,
+  .custom-logo-image {
+    opacity: 0;
+    position: relative;
+    top: -10px;
+  }
+}
+
+.site-nav-toggle,
+.site-nav-right {
+  display: none;
+
+  @include mobile() {
+    @include flex-column;
+  }
+
+  .toggle {
+    color: white;
+    padding: 10px;
+    width: 22px;
+
+    .toggle-line {
+      background: white;
+      border-radius: 1px;
+    }
+  }
+
+  @include tablet {
+    @include flex-column;
+  }
+}
+
+.site-nav {
+  @include mobile() {
+    display: none;
+  }
+
+  .site-nav-on & {
+    display: block;
+  }
+}
+
+// Menu
+// --------------------------------------------------
+.menu {
+  margin: 0;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.menu-item {
+  display: inline-block;
+  list-style: none;
+  margin: 0 10px;
+
+  @include mobile {
+    display: block;
+    margin-top: 10px;
+
+    &.menu-item-search {
+      display: none;
+    }
+  }
+
+  a,
+  span.exturl {
+    border-bottom: 0;
+    display: block;
+    font-size: $font-size-smaller;
+    transition: border-color $transition-ease;
+
+    &:hover,
+    &.menu-item-active {
+      background: var(--menu-item-bg-color);
+    }
+  }
+
+  .fa,
+  .fab,
+  .far,
+  .fas {
+    margin-right: 8px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1;
+    margin-left: 0.35em;
+    margin-top: 0.35em;
+    text-align: center;
+    white-space: nowrap;
+
+    @include mobile {
+      float: right;
+      margin-left: 0;
+    }
+  }
+}
+
+.use-motion .menu-item {
+  visibility: hidden;
+}
+
+.site-brand-container {
+  background-color: #333399;
+
+  .site-nav-on & {
+    @include tablet-mobile {
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.site-nav {
+  @include tablet {
+    display: none;
+  }
+}
+
+.menu .menu-item {
+  display: block;
+  margin: 0;
+
+  a,
+  span.exturl {
+    padding: 5px 20px;
+    position: relative;
+    text-align: left;
+    transition-property: background-color;
+  }
+
+  @include tablet-mobile {
+    &.menu-item-search {
+      display: none;
+    }
+  }
+
+  .badge {
+    background: $grey-light;
+    border-radius: 10px;
+    color: var(--content-bg-color);
+    float: right;
+    padding: 2px 5px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.sub-menu {
+  margin: 0;
+  padding: 6px 0;
+
+  .menu-item {
+    display: inline-block;
+
+    a,
+    span.exturl {
+      background: transparent;
+      margin: 5px 10px;
+      padding: initial;
+
+      &:hover {
+        background: transparent;
+        color: $sidebar-highlight;
+      }
+    }
+  }
+
+  .menu-item-active {
+    border-bottom-color: $sidebar-highlight;
+    color: $sidebar-highlight;
+
+    &:hover {
+      border-bottom-color: $sidebar-highlight;
+    }
+  }
+}
+
+// github-banner
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+.github-corner {
+  $bg-color: #009966;
+
+  :hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+
+  svg {
+    color: white;
+    fill: $bg-color;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $zindex-0;
+  }
+
+  @include tablet-mobile {
+    display: none;
+
+    svg {
+      color: $bg-color;
+      fill: white;
+    }
+
+    .github-corner:hover .octo-arm {
+      animation: none;
+    }
+
+    .github-corner .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
+}
+// github-banner end

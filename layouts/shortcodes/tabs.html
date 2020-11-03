@@ -1,0 +1,18 @@
+{{ $id := .Get 0 }}
+{{ $tab := .Params | last (sub (len .Params) 1) }}
+{{ if and $id $tab }}
+<div class="tabs" id="{{ $id }}">
+  <ul class="nav-tabs">
+    {{ range $order, $name := $tab }}
+    <li class="tab{{ if not $order }} active{{ end }}">
+      <a href="#{{ $id }}-{{ $order }}">{{ $name }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  <div class="tab-content">
+    {{ .Inner }}
+  </div>
+</div>
+{{ else }}
+{{ errorf "missing param: %s" .Position }}
+{{ end }}

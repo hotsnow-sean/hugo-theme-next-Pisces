@@ -1,0 +1,96 @@
+.post-body .note {
+  border-radius: $note-border-radius;
+  margin-bottom: 20px;
+  padding: 1em;
+  position: relative;
+
+  border: 1px solid $gainsboro;
+  border-left-width: 5px;
+
+  summary {
+    cursor: pointer;
+    outline: 0;
+
+    p {
+      display: inline;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border-bottom: initial;
+    margin: 0;
+    padding-top: 0;
+  }
+
+  p,
+  ul,
+  ol,
+  table,
+  pre,
+  blockquote,
+  img {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &:not(.no-icon) {
+    padding-left: 2.5em;
+
+    &::before {
+      font-size: 1.5em;
+      left: 0.3em;
+      position: absolute;
+      top: calc(50% - 1em);
+    }
+  }
+
+  $note-border-color: (
+    'default': $note-border-default,
+    'primary': $note-border-primary,
+    'info': $note-border-info,
+    'success': $note-border-success,
+    'danger': $note-border-danger,
+  );
+  $note-icon-content: (
+    'default': $note-icon-default,
+    'primary': $note-icon-primary,
+    'info': $note-icon-info,
+    'success': $note-icon-success,
+    'danger': $note-icon-danger,
+  );
+  $note-text-content: (
+    'default': $note-text-default,
+    'primary': $note-text-primary,
+    'info': $note-text-info,
+    'success': $note-text-success,
+    'danger': $note-text-danger,
+  );
+
+  @each $type in $note-types {
+    &.#{$type} {
+      border-left-color: map-get($note-border-color, $type);
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: lookup('$note-text-' + $type);
+      }
+
+      &:not(.no-icon)::before {
+        @include font-family-icons(map-get($note-icon-content, $type));
+        color: map-get($note-text-content, $type);
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{{ define "title" }}
+{{- or (i18n .Data.Singular) .Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "class" }}page posts-expand{{ end }}
+
+{{ define "content" }}
+<div class="post-block">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{- or (i18n .Data.Singular) .Title }}</h1>
+  </header>
+  <div class="post-body">
+    {{- if eq .Type "tags" }}
+    {{ partial "taxonomy/tags.html" . }}
+    {{ else if eq .Type "categories" }}
+    {{ partial "taxonomy/categories.html" . }}
+    {{ else -}}
+    <ul>
+      {{ range .Data.Terms -}}
+      <li class="category-list-item">
+        <a href="{{ .Page.RelPermalink }}" class="category-list-link">{{ .Page.Title }}</a>
+        <span class="category-list-count">{{ .Count }}</span>
+      </li>
+      {{ end -}}
+    </ul>
+    {{- end }}
+  </div>
+</div>
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}

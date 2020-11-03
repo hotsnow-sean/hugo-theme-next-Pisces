@@ -1,0 +1,58 @@
+<div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content">
+    <link itemprop="mainEntityOfPage" href="{{ .Permalink }}">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="{{ .Site.Params.avatar }}">
+      <meta itemprop="name" content="{{ or .Params.author .Site.Params.author }}">
+      <meta itemprop="description" content="{{ or .Params.description .Site.Params.description }}">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{ .Site.Title }}">
+    </span>
+
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        {{- .Title }}
+      </h1>
+
+      <div class="post-meta-container">
+        {{ partial "post/post-meta.html" . }}
+      </div>
+    </header>
+
+    <div class="post-body" itemprop="articleBody">
+      {{ .Content }}
+    </div>
+
+    {{ partial "post/post-related" . }}
+
+    <footer class="post-footer">
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-paw"></i>
+        感谢您的阅读-------------</div>
+      {{ partial "post/post-copyright.html" . }}
+
+      <div class="post-tags">
+        {{ range (.GetTerms "tags") }}
+        <a href="{{ .Permalink }}" rel="tag"><i class="fa fa-tag"></i> {{ .LinkTitle }}</a>
+        {{ end }}
+      </div>
+
+      {{ if or .PrevInSection .NextInSection }}
+      <div class="post-nav">
+        <div class="post-nav-item">
+          {{ with .PrevInSection }}
+          <a rel="prev" href="{{.Permalink}}" title="{{.Title}}"><i class="fa fa-chevron-left"></i> {{.Title}}</a>
+          {{ end }}
+        </div>
+        <div class="post-nav-item">
+          {{ with .NextInSection }}
+          <a rel="next" href="{{.Permalink}}" title="{{.Title}}">{{.Title}} <i class="fa fa-chevron-right"></i></a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </footer>
+  </article>
+</div>

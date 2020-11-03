@@ -1,0 +1,106 @@
+# menu
+[home]
+other = "首页"
+[about]
+other = "关于"
+[archives]
+other = "归档"
+[tags]
+other = "标签"
+[categories]
+other = "分类"
+[search]
+other = "搜索"
+[sitemap]
+other = "站点地图"
+
+#title
+[archive]
+other = "归档"
+[tag]
+other = "标签"
+[category]
+other = "文章分类"
+
+# state
+[state]
+[state.posts]
+other = "日志"
+[state.tags]
+other = "标签"
+[state.categories]
+other = "分类"
+
+# sidebar
+[overview]
+other = "站点概览"
+[toc]
+other = "文章目录"
+
+
+# post
+[posted]
+other = "发表于"
+[edited]
+other = "更新于"
+[created]
+other = "创建时间"
+[modified]
+other = "修改时间"
+[in]
+other = "分类于"
+[read_more]
+other = "阅读全文"
+[untitled]
+other = "未命名"
+[sticky]
+other = "置顶"
+[related_posts]
+other = "相关文章"
+
+# copyright
+[author]
+other = "本文作者"
+[link]
+other = "本文链接"
+[post_author]
+other = "原作者"
+[post_link]
+other = "原文链接"
+[license_title]
+other = "版权声明"
+[license_content]
+other = "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
+
+# archive list page cheer text
+[um]
+other = "嗯.."
+[ok]
+other = "还行"
+[nice]
+other = "不错"
+[good]
+other = "很好"
+[great]
+other = "非常好"
+[excellent]
+other = "太棒了"
+# archive list page keep on text
+[keep_on]
+other = "继续努力。"
+
+# counter 根据CLDR复数规则，zero和one实际上在很多语言都无效，包括中文
+[counter]
+[counter.tag_cloud]
+zero = "暂无标签"
+one = "目前共计 1 个标签"
+other = "目前共计 {{ .Count }} 个标签"
+[counter.categories]
+zero = "暂无分类"
+one = "目前共计 1 个分类"
+other = "目前共计 {{ .Count }} 个分类"
+[counter.archive_posts]
+zero = "暂无日志。"
+one = "目前共计 1 篇日志。"
+other = "目前共计 {{ .Count }} 篇日志。"
+

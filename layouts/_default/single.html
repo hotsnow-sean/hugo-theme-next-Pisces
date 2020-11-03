@@ -1,0 +1,22 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "content" }}
+<div class="post-block">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">
+      {{- .Title }}
+    </h1>
+    <div class="post-meta-container">
+    </div>
+  </header>
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}
+
+{{ define "class" }}page posts-expand{{ end }}

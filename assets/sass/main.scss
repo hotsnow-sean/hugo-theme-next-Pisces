@@ -1,0 +1,16 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/colors';
+
+// Scaffolding
+@import 'base/scaffolding';
+@import 'shortcodes/shortcodes';
+
+// Components
+@import 'layout/header.scss';
+@import 'layout/sidebar.scss';
+@import 'layout/footer.scss';
+@import 'components/components';
+
+// Schemes Layer
+@import 'layout/layout.scss';

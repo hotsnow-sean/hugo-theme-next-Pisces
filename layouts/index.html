@@ -1,0 +1,13 @@
+{{ define "content" }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+{{ range $paginator.Pages }}
+{{ partial "post/post-item.html" . }}
+{{ end }}
+{{ partial "pagination.html" $paginator }}
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}
+
+{{ define "class" }}index posts-expand{{ end }}

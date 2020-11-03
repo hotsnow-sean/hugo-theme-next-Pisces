@@ -1,0 +1,489 @@
+.rtl {
+  &.post-body {
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    ul,
+    ol {
+      direction: rtl;
+      font-family: UKIJ Ekran;
+    }
+  }
+
+  &.post-title {
+    font-family: UKIJ Ekran;
+  }
+}
+
+.post-button {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.use-motion {
+  .post-block,
+  .pagination,
+  .comments {
+    visibility: hidden;
+  }
+
+  .post-header {
+    visibility: hidden;
+  }
+
+  .post-body {
+    visibility: hidden;
+  }
+
+  .collection-header {
+    visibility: hidden;
+  }
+}
+
+.posts-collapse .post-content {
+  margin-bottom: $posts-collapse-margin;
+  margin-left: $posts-collapse-margin;
+  position: relative;
+
+  @include mobile {
+    margin-left: $posts-collapse-margin-mobile;
+    margin-right: $posts-collapse-margin-mobile;
+  }
+
+  .collection-title {
+    font-size: $font-size-large;
+    position: relative;
+
+    &::before {
+      background: $grey-dark;
+      border: 1px solid white;
+      margin-left: -6px;
+      margin-top: -4px;
+      position: absolute;
+      top: 50%;
+      @include round-icon(10px);
+    }
+  }
+
+  .collection-year {
+    font-size: $font-size-largest;
+    font-weight: bold;
+    margin: 60px 0;
+    position: relative;
+
+    &::before {
+      background: $grey;
+      margin-left: -4px;
+      margin-top: -4px;
+      position: absolute;
+      top: 50%;
+      @include round-icon(8px);
+    }
+  }
+
+  .collection-header {
+    display: block;
+    margin-left: 20px;
+
+    small {
+      color: $grey;
+      margin-left: 5px;
+    }
+  }
+
+  .post-header {
+    border-bottom: 1px dashed $grey-light;
+    // 2px is equal to half the width of .posts-collapse::before
+    margin: 30px 2px 0;
+    padding-left: 15px;
+    position: relative;
+    transition: border $transition-ease;
+
+    &::before {
+      background: $grey;
+      border: 1px solid white;
+      left: -6px;
+      position: absolute;
+      top: $font-size-smallest;
+      transition: background $transition-ease;
+      @include round-icon(6px);
+    }
+
+    &:hover {
+      border-bottom-color: $grey-dim;
+
+      &::before {
+        background: $black-deep;
+      }
+    }
+  }
+
+  .post-meta-container {
+    display: inline;
+    font-size: $font-size-smallest;
+    margin-right: 10px;
+  }
+
+  .post-title {
+    display: inline;
+
+    a,
+    span.exturl {
+      border-bottom: none;
+      color: var(--link-color);
+    }
+
+    .fa-external-link-alt {
+      font-size: $font-size-small;
+      margin-left: 5px;
+    }
+  }
+
+  &::before {
+    background: $whitesmoke;
+    content: ' ';
+    height: 100%;
+    margin-left: -2px;
+    position: absolute;
+    // To do: 1.25em is inaccurate when .collection-title has line breaks on mobile
+    top: 1.25em;
+    width: 4px;
+  }
+}
+
+.post-body {
+  font-family: $font-family-posts;
+  @include word-wrap;
+
+  @include desktop-large {
+    font-size: $font-size-medium;
+  }
+
+  @include desktop {
+    text-align: justify;
+  }
+
+  @include tablet-mobile {
+    text-align: justify;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding-top: 10px;
+
+    // Supported plugins: hexo-renderer-markdown-it hexo-renderer-marked
+    .header-anchor,
+    .headerlink {
+      border-bottom-style: none;
+      color: inherit;
+      float: right;
+      font-size: $font-size-small;
+      margin-left: 10px;
+      opacity: 0;
+
+      &::before {
+        @include font-family-icons('\f0c1');
+      }
+    }
+
+    &:hover {
+      .header-anchor,
+      .headerlink {
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  a {
+    color: #009999;
+    &:hover {
+      color: var(--link-hover-color);
+    }
+  }
+  a.btn {
+    color: var(--btn-default-color);
+    &:hover {
+      color: var(--btn-default-hover-color);
+    }
+  }
+
+  .exturl .fa {
+    font-size: $font-size-small;
+    margin-left: 4px;
+  }
+
+  .image-caption,
+  .figure .caption {
+    color: $grey-dark;
+    font-size: $font-size-small;
+    font-weight: bold;
+    line-height: 1;
+    margin: -20px auto 15px;
+    text-align: center;
+  }
+
+  iframe,
+  img,
+  video,
+  embed {
+    margin-bottom: 20px;
+  }
+
+  .video-container {
+    height: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding-top: 75%;
+    position: relative;
+    width: 100%;
+
+    iframe,
+    object,
+    embed {
+      height: 100%;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+.post-gallery {
+  display: flex;
+  min-height: 200px;
+
+  .post-gallery-image {
+    flex: 1;
+
+    &:not(:first-child) {
+      clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+      margin-left: -20px;
+    }
+
+    &:not(:last-child) {
+      margin-right: -20px;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      // Override darkmode image opacity.
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
+
+.posts-expand .post-gallery {
+  margin-bottom: 60px;
+}
+
+.posts-collapse .post-gallery {
+  margin: 15px 0;
+}
+
+.posts-expand .post-header {
+  font-size: $font-size-medium;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.posts-expand .post-title {
+  font-size: $font-size-largest;
+  font-weight: normal;
+  margin: initial;
+  @include word-wrap;
+}
+
+.posts-expand .post-title-link {
+  border-bottom: none;
+  color: var(--link-color);
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    background: var(--link-color);
+    bottom: 0;
+    content: '';
+    height: 2px;
+    // Fix issue #75
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transition: transform $transition-ease;
+    width: 100%;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  .fa-external-link-alt {
+    font-size: $font-size-small;
+    margin-left: 5px;
+  }
+}
+
+.post-sticky-flag {
+  display: inline-block;
+  transform: rotate(30deg);
+}
+
+.posts-expand .post-meta-container {
+  color: $grey-dark;
+  font-family: $font-family-posts;
+  font-size: $font-size-smallest;
+  margin-top: 3px;
+
+  .post-description {
+    font-size: $font-size-small;
+    margin-top: 2px;
+  }
+
+  time {
+    border-bottom: 1px dashed $grey-dark;
+    cursor: pointer;
+  }
+}
+
+// Flexbox layout makes it possible to reorder the child
+// elements of .post-meta through the `order` CSS property
+.post-meta {
+  @include flex-wrap;
+}
+
+// .post-meta-item exists in .post-meta and footer
+.post-meta-item:not(:first-child)::before {
+  content: '|';
+  margin: 0 0.5em;
+}
+
+.post-meta-item-icon {
+  margin-right: 3px;
+}
+
+.post-meta-item-text {
+  @include tablet-mobile() {
+    display: none;
+  }
+}
+
+.post-nav {
+  border-top: 1px solid $gainsboro;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  margin-top: 1em;
+  padding: 10px 5px 0;
+}
+
+.post-nav-item {
+  flex: 1;
+
+  a {
+    border-bottom: none;
+    display: block;
+    font-size: $font-size-small;
+    line-height: 1.6;
+
+    &:active {
+      top: 2px;
+    }
+  }
+
+  .fa {
+    font-size: $font-size-smallest;
+  }
+
+  &:first-child {
+    .fa {
+      margin-right: 5px;
+    }
+  }
+
+  &:last-child {
+    text-align: right;
+
+    .fa {
+      margin-left: 5px;
+    }
+  }
+}
+
+// Flexbox layout makes it possible to reorder the child
+// elements of .post-footer through the `order` CSS property
+// Fix issue #16
+// To do: use `gap` instead of `margin-bottom`
+// See https://caniuse.com/#feat=flexbox-gap
+.post-footer {
+  @include flex-column;
+}
+
+.post-eof {
+  background: $grey-light;
+  height: 1px;
+  margin: $post-eof-margin-top auto $post-eof-margin-bottom;
+  width: 8%;
+
+  .post-block:last-of-type & {
+    display: none;
+  }
+}
+
+.post-copyright ul {
+  list-style: none;
+  padding: 0.5em 1em;
+  font-size: $font-size-small;
+  @include post-card;
+}
+
+.post-tags {
+  margin-top: 40px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    font-size: $font-size-smaller;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.post-widgets {
+  border-top: 1px solid $gainsboro;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.wp_rating {
+  height: 20px;
+  line-height: 20px;
+  margin-top: 10px;
+  padding-top: 6px;
+  text-align: center;
+}
+
+.social-like {
+  display: flex;
+  font-size: $font-size-small;
+  justify-content: center;
+  text-align: center;
+}

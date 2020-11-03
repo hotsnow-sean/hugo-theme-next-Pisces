@@ -1,0 +1,11 @@
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{- with $related }}
+<div class="popular-posts-header">{{ i18n "related_posts" }}</div>
+<ul class="popular-posts">
+  {{- range . }}
+  <li class="popular-posts-item">
+    <div class="popular-posts-title"><a href="{{ .RelPermalink }}" rel="bookmark">{{ .Title }}</a></div>
+  </li>
+  {{- end }}
+</ul>
+{{- end }}

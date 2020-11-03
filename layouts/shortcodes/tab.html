@@ -1,0 +1,7 @@
+{{- with .Parent -}}
+<div class="tab-pane{{ if not $.Ordinal }} active{{ end }}" id="{{ .Get 0 }}-{{ $.Ordinal }}">
+  {{ $.Inner }}
+</div>
+{{- else -}}
+{{ errorf "tab must be included by a tabs: %s" .Position }}
+{{- end }}

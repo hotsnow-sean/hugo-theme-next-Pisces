@@ -1,0 +1,110 @@
+{{ $is_Page := (and (eq .Kind "page") (eq .Type "posts")) -}}
+
+<div class="toggle sidebar-toggle">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+
+<aside class="sidebar">
+  <div
+    class="sidebar-inner  {{ if $is_Page }}sidebar-nav-active sidebar-toc-active{{ else }}sidebar-overview-active{{ end }}">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        {{ i18n "toc" }}
+      </li>
+      <li class="sidebar-nav-overview">
+        {{ i18n "overview" }}
+      </li>
+    </ul>
+
+    <div class="sidebar-panel-container">
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+        {{ if $is_Page }}
+        <div class="post-toc">
+          {{ .TableOfContents }}
+        </div>
+        {{ end }}
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+
+        <div class="site-author site-overview-item animated">
+          <img class="site-author-image" itemprop="image" src="{{ .Site.Params.avatar }}">
+          <p class="site-author-name" itemprop="name">{{ .Site.Params.author }}</p>
+          <div class="site-description" itemprop="description">{{ .Site.Params.description }}</div>
+        </div>
+
+        <div class="site-state-wrap site-overview-item animated">
+          <nav class="site-state">
+            {{- with .Site.RegularPages }}
+            <div class="site-state-item site-state-posts">
+              <a href="/posts/">
+                <span class="site-state-item-count">{{ len (where . "Type" "posts") }}</span>
+                <span class="site-state-item-name">{{ i18n "state.posts" }}</span>
+              </a>
+            </div>
+            {{- end }}
+
+            {{- with .Site.Taxonomies.categories }}
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">{{ len . }}</span>
+                <span class="site-state-item-name">{{ i18n "state.categories" }}</span>
+              </a>
+            </div>
+            {{ end }}
+
+            {{- with .Site.Taxonomies.tags }}
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">{{ len . }}</span>
+                <span class="site-state-item-name">{{ i18n "state.tags" }}</span>
+              </a>
+            </div>
+            {{ end }}
+          </nav>
+        </div>
+
+        <div class="links-of-author site-overview-item animated">
+          {{- range .Site.Params.social }}
+          <span class="links-of-author-item">
+            <a href="{{.url}}" title="{{.name}} → {{.url}}" target="_blank" rel="noopener noreferrer">
+              <i class="{{.icon}} fa-fw"></i>{{.name}}
+            </a>
+          </span>
+          {{- end }}
+        </div>
+
+        <div class="cc-license site-overview-item animated" itemprop="license">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank"
+            rel="noopener">
+            <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+          </a>
+        </div>
+
+        {{/* Blogroll */}}
+        {{- if .Site.Params.links }}
+        <div class="links-of-blogroll site-overview-item animated">
+          <div class="links-of-blogroll-title">
+            <i class="fa fa-globe fa-fw"></i>
+            {{ .Site.Params.links_title }}
+          </div>
+          <ul class="links-of-blogroll-list">
+            {{- range .Site.Params.links }}
+            <li class="links-of-blogroll-item">
+              <a href="{{.url}}" title="{{.url}}" target="_blank" rel="noopener noreferrer">{{.name}}</a>
+            </li>
+            {{- end }}
+          </ul>
+        </div>
+        {{- end }}
+
+      </section>
+    </div>
+
+  </div>
+</aside>
+<div class="sidebar-dimmer"></div>

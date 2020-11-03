@@ -1,0 +1,35 @@
+<script>
+  var pjax = new Pjax({
+    selectors: [
+      'head title',
+      '.page-configurations',
+      '.menu-item',
+      '.main-inner',
+      '.post-toc-wrap',
+      '.languages',
+      '.pjax'
+    ],
+    analytics: false,
+    cacheBust: false,
+    scrollRestoration: false,
+    scrollTo: true
+  });
+
+  document.addEventListener('pjax:success', () => {
+    // pjax.refresh(document.querySelectorAll('script[data-pjax], .pjax script'));
+    NexT.boot.refresh();
+    Array.prototype.forEach.call(document.querySelectorAll('.menu-item'), $target => {
+      $target.classList.add('animated');
+    })
+    // Define Motion Sequence & Bootstrap Motion.
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+    const hasTOC = document.querySelector('.post-toc');
+    document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+    document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+    NexT.utils.updateSidebarPosition();
+  });
+</script>

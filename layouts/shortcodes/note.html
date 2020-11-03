@@ -1,0 +1,10 @@
+{{ if .Get "summary" }}
+<details class="note {{ .Get "type" }}{{ if eq (.Get "icon") "no" }} no-icon{{ end }}">
+  <summary>{{ .Get "summary" }}</summary>
+  {{- .Inner }}
+</details>
+{{ else }}
+<div class="note {{ .Get "type" }}{{ if eq (.Get "icon") "no" }} no-icon{{ end }}">
+  {{- .Inner }}
+</div>
+{{ end }}

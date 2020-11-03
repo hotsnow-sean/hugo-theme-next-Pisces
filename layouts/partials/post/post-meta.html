@@ -1,0 +1,36 @@
+<div class="post-meta">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="far fa-calendar"></i>
+    </span>
+    <span class="post-meta-item-text">{{ i18n "posted" }}</span>
+    <time title="{{ i18n "created" }}：{{ .Date.Format "2006-01-02 15:04:05" }}" itemprop="dateCreated datePublished"
+      datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+  </span>
+
+  {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="far fa-calendar-check"></i>
+    </span>
+    <span class="post-meta-item-text">{{ i18n "edited" }}</span>
+    <time title="{{ i18n "modified" }}：{{ .Lastmod.Format "2006-01-02 15:04:05" }}" itemprop="dateModified"
+      datetime="{{ .Lastmod }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+  </span>
+  {{- end }}
+
+  {{- with (.GetTerms "categories") }}
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="far fa-folder"></i>
+    </span>
+    <span class="post-meta-item-text">{{ i18n "in" }}</span>
+    {{- range $id, $val := . }}
+    {{ if $id }}/{{ end -}}
+    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+      <a href="{{ $val.Permalink }}" itemprop="url" rel="index"><span itemprop="name">{{ $val.LinkTitle }}</span></a>
+    </span>
+    {{ end }}
+  </span>
+  {{- end }}
+</div>

@@ -1,0 +1,55 @@
+{{/* brand */}}
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle">
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">{{ .Site.Title }}</h1>
+      <i class="logo-line"></i>
+    </a>
+    {{ if .Site.Params.subtitle }}
+    <p class="site-subtitle" itemprop="description">{{ .Site.Params.subtitle }}</p>
+    {{ end }}
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+{{/* brand end */}}
+{{/* menu */}}
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    {{ range .Site.Menus.main }}
+    <li class="menu-item">
+      <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . -}} class="menu-item-active" {{ end -}}
+        rel="section">{{ .Pre }}{{ i18n .Name }}
+        {{- $count := 0 -}}
+        {{ if eq .Identifier "archives" }}{{ $count = (len (where $.Site.RegularPages "Type" "posts")) -}}
+        {{ else if eq .Identifier "categories" }}{{ $count = (len $.Site.Taxonomies.categories) -}}
+        {{ else if eq .Identifier "tags" }}{{ $count = (len $.Site.Taxonomies.tags) }}{{ end -}}
+        {{ if $count -}}
+        <span class="badge">{{ $count }}</span>
+        {{- end }}
+      </a>
+    </li>
+    {{ end }}
+
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>{{ i18n "search" }}
+      </a>
+    </li>
+  </ul>
+</nav>
+{{/* menu end */}}
+{{ partial "search.html" . }}

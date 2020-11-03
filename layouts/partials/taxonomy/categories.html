@@ -1,0 +1,15 @@
+<div class="category-all-page">
+  <div class="category-all-title">
+    {{ i18n "counter.categories" (len .Data.Terms) }}
+  </div>
+  <div class="category-all">
+    <ul class="category-list">
+      {{ range .Data.Terms -}}
+      <li class="category-list-item">
+        <a href="{{.Page.Permalink}}" class="category-list-link">{{.Page.Title}}</a>
+        <span class="category-list-count">{{ .Count }}</span>
+      </li>
+      {{ end -}}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+{{ define "title" }}{{ i18n "archive" }} | {{ .Title }}{{ end }}
+
+{{ define "class" }}archive posts-collapse{{ end }}
+
+{{ define "content" }}
+{{ $paginator := .Paginate .Pages 15 }}
+<div class="post-block">
+  <div class="post-content">
+    <div class="collection-title">
+      {{- $posts_length := (len (where .Site.RegularPages "Type" "posts")) }}
+      {{- $cheers := "um" }}
+      {{- if gt $posts_length 210 }}
+      {{- $cheers = "excellent" }}
+      {{ else if gt $posts_length 130 }}
+      {{- $cheers = "great" }}
+      {{ else if gt $posts_length 80 }}
+      {{- $cheers = "good" }}
+      {{ else if gt $posts_length 50 }}
+      {{- $cheers = "nice" }}
+      {{ else if gt $posts_length 30 }}
+      {{- $cheers = "ok" }}
+      {{ end }}
+      <span class="collection-header">{{ i18n $cheers }}! {{ i18n "counter.archive_posts" $posts_length }}
+        {{ i18n "keep_on" }}</span>
+    </div>
+
+    {{ partial "post/post-collapse" $paginator.Pages }}
+
+  </div>
+</div>
+{{ partial "pagination.html" $paginator }}
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}

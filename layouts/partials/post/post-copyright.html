@@ -1,0 +1,22 @@
+<div class="post-copyright">
+  <ul>
+    <li class="post-copyright-author">
+      {{- if .Params.author }}
+      <strong>{{ i18n "post_author" }}： </strong>
+      {{- .Params.author }}
+      {{- else if .Site.Params.author }}
+      <strong>{{ i18n "author" }}： </strong>
+      {{- .Site.Params.author }}
+      {{- end }}
+    </li>
+    <li class="post-copyright-link">
+      <strong>{{ i18n "link" }}： </strong>
+      <a href="{{.Permalink}}" title="{{.Title}}">{{.Permalink}}</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>{{ i18n "license_title" }}： </strong>
+      {{ $copyright := print `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a>` }}
+      {{ printf (i18n "license_content") $copyright | safeHTML }}
+    </li>
+  </ul>
+</div>

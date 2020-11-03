@@ -1,0 +1,11 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "content" }}
+{{ partial "post.html" . }}
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}
+
+{{ define "class" }}page posts-expand{{ end }}

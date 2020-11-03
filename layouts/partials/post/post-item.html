@@ -1,0 +1,38 @@
+<div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content">
+    <link itemprop="mainEntityOfPage" href="{{ .Permalink }}">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="{{ .Site.Params.avatar }}">
+      <meta itemprop="name" content="{{ or .Params.author .Site.Params.author }}">
+      <meta itemprop="description" content="{{ or .Params.description .Site.Params.description }}">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="{{ .Site.Title }}">
+    </span>
+
+    <header class="post-header">
+      <h2 class="post-title" itemprop="name headline">
+        <a href="{{ .Permalink }}" class="post-title-link" itemprop="url">{{ .Title }}</a>
+      </h2>
+
+      <div class="post-meta-container">
+        {{ partial "post/post-meta.html" . }}
+      </div>
+    </header>
+
+    <div class="post-body" itemprop="articleBody">
+      {{ .Summary }}
+      <div class="post-button">
+        <a class="btn" href="{{ .RelPermalink }}" rel="contents">
+          {{ i18n "read_more" }} &raquo;
+        </a>
+      </div>
+    </div>
+
+    <footer class="post-footer">
+      <div class="post-eof"></div>
+    </footer>
+  </article>
+</div>

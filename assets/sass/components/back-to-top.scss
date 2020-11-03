@@ -1,0 +1,17 @@
+.back-to-top {
+  font-size: $b2t-font-size;
+  bottom: $b2t-position-bottom;
+  box-sizing: border-box;
+  color: $b2t-color;
+  padding: 0 6px;
+  transition: bottom $transition-ease;
+  @include sidebar-toggle;
+
+  &:hover {
+    color: $sidebar-highlight;
+  }
+
+  &.back-to-top-on {
+    bottom: $b2t-position-bottom-on;
+  }
+}

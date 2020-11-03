@@ -1,0 +1,23 @@
+{{ define "title" }}{{ i18n .Data.Plural }}: {{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "class" }}{{ .Data.Singular }} posts-collapse{{ end }}
+
+{{ define "content" }}
+{{ $paginator := .Paginate .Data.Pages 15 }}
+<div class="post-block">
+  <div class="post-content">
+    <div class="collection-title">
+      <h2 class="collection-header">
+        {{- .Data.Term }}
+        <small>{{ i18n .Data.Plural }}</small>
+      </h2>
+    </div>
+    {{ partial "post/post-collapse" $paginator.Pages }}
+  </div>
+</div>
+{{ partial "pagination.html" $paginator }}
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "sidebar.html" . }}
+{{ end }}
