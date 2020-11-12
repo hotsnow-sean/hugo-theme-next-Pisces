@@ -1,0 +1,78 @@
+baseURL: http://example.org/
+defaultContentLanguage: zh-cn # site language, use to select i18n file
+hasCJKLanguage: true
+languageCode: zh-CN # html language
+theme: next
+title: "Hotsnow's Island"
+outputs:
+  home: [HTML, RSS, JSON] # 主要添加了 JSON, 用于输出搜索用的索引文件
+
+params:
+  author: Example
+  avatar: "" # 头像图片地址
+  links_title: 欢迎访问 # welcome
+  since: 2020
+  subtitle: "hello world" # site subtitle
+  favicon: # 网站 logo 地址
+    small: url
+    medium: url
+    apple_touch_icon: url
+    safari_pinned_tab: url
+    android_manifest: url
+    ms_browserconfig: url
+  social: # sidebar link, social: icon + text
+    - icon: fab fa-github
+      name: GitHub
+      url: https://github.com/hotsnow-sean
+  links: # sidebar link, link: only text
+    - name: Bilibili-炎军逸雪的个人空间
+      url: https://space.bilibili.com/21290512
+    - name: Gitee-码云
+      url: https://gitee.com/smallsean
+  github_banner:
+    enable: true
+    permalink: https://github.com/hotsnow-sean
+
+menu: # menu, if not use just to comment
+  main:
+    - name: home # home page
+      pre: "<i class='fa fa-home fa-fw'></i>"
+      url: /
+      weight: -100
+    - name: about # about page
+      pre: "<i class='fa fa fa-user fa-fw'></i>"
+      url: /about/
+      weight: -90
+    - identifier: tags # tags page
+      name: tags
+      pre: "<i class='fa fa-tags fa-fw'></i>"
+      url: /tags/
+      weight: -80
+    - identifier: categories # categories page
+      name: categories
+      pre: "<i class='fa fa-th fa-fw'></i>"
+      url: /categories/
+      weight: -70
+    - identifier: archives # archives page
+      name: archives
+      pre: "<i class='fa fa-archive fa-fw'></i>"
+      url: /posts/
+      weight: -60
+    # - name: custom
+    #   pre: "<i class='fa fa-... fa-fw'></i>"
+    #   url: /.../
+    #   weight: -50
+    - name: sitemap
+      pre: "<i class='fa fa-sitemap fa-fw'></i>"
+      url: /sitemap.xml
+      weight: -40
+
+markup: # Can't delete. Markdown -> Html options
+  tableOfContents:
+    endLevel: 4
+    startLevel: 1
+  highlight:
+    style: friendly
+  goldmark:
+    renderer:
+      unsafe: true
