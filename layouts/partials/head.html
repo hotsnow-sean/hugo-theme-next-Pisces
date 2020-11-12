@@ -1,6 +1,23 @@
 {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{{- with .Site.Params.favicon.apple_touch_icon }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ . }}">
+{{- end }}
+{{- with .Site.Params.favicon.medium }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ . }}">
+{{- end }}
+{{- with .Site.Params.favicon.small }}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ . }}">
+{{- end }}
+{{- with .Site.Params.favicon.safari_pinned_tab }}
+<link rel="mask-icon" href="{{ . }}" color="#009966">
+{{- end }}
+{{- with .Site.Params.favicon.android_manifest }}
+<link rel="manifest" href="{{ . }}">
+{{- end }}
+
 <link rel="stylesheet" href="{{ $style.Permalink }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
