@@ -10,7 +10,7 @@
   <div class="headband"></div>
   <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">{{- partial "header.html" . -}}</div>
+      <div class="header-inner">{{- partialCached "header.html" . -}}</div>
       {{- block "sidebar" . }}{{- end }}
     </header>
 
@@ -42,7 +42,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      {{- partial "footer.html" . -}}
+      {{- partialCached "footer.html" . -}}
     </div>
   </footer>
 

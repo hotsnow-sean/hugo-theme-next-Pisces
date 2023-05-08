@@ -18,6 +18,7 @@
   document.addEventListener('pjax:success', () => {
     // pjax.refresh(document.querySelectorAll('script[data-pjax], .pjax script'));
     NexT.boot.refresh();
+    NexT.plugins.localSearch();
     Array.prototype.forEach.call(document.querySelectorAll('.menu-item'), $target => {
       $target.classList.add('animated');
     })

@@ -1,4 +1,6 @@
-window.NexT = new Object();
+window.NexT = {
+  plugins: {}
+}
 window.anime = anime;
 
 const CONFIG = {

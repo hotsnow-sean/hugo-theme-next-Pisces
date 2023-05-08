@@ -1,6 +1,6 @@
 /* global CONFIG */
 
-document.addEventListener('DOMContentLoaded', () => {
+const search = () => {
   if (!CONFIG.localsearch.path) {
     // Search DB path
     console.warn('`hexo-generator-searchdb` plugin is not installed!');
@@ -136,9 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
       url.searchParams.append('highlight', keywords.join(' '));
 
       if (slicesOfTitle.length !== 0) {
-        resultItem += `<li><a href="${
-          url.href
-        }" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
+        resultItem += `<li><a href="${url.href
+          }" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
       } else {
         resultItem += `<li><a href="${url.href}" class="search-result-title">${title}</a>`;
       }
@@ -209,16 +208,16 @@ document.addEventListener('DOMContentLoaded', () => {
         isfetched = true;
         datas = isXml
           ? [
-              ...new DOMParser()
-                .parseFromString(res, 'text/xml')
-                .querySelectorAll('entry'),
-            ].map((element) => {
-              return {
-                title: element.querySelector('title').textContent,
-                content: element.querySelector('contents').textContent,
-                url: element.querySelector('permalink').textContent,
-              };
-            })
+            ...new DOMParser()
+              .parseFromString(res, 'text/xml')
+              .querySelectorAll('entry'),
+          ].map((element) => {
+            return {
+              title: element.querySelector('title').textContent,
+              content: element.querySelector('contents').textContent,
+              url: element.querySelector('permalink').textContent,
+            };
+          })
           : JSON.parse(res);
         // Only match articles with non-empty titles
         datas = datas
@@ -228,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data.content = data.contents
               ? data.contents.trim().replace(/<[^>]+>/g, '')
               : '';
-            data.url = decodeURIComponent(data.permalink).replace(/\/{2,}/g, '/');
+            data.url = decodeURIComponent(data.permalink);
             return data;
           });
         // Remove loading animation
@@ -243,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const getQueryParameters = () => {
     const s = location.search;
-    const parts = s.substr(s.indexOf('?') + 1).split('&');
+    const parts = s.substring(s.indexOf('?') + 1).split('&');
     const result = {};
     for (const part of parts) {
       const [key, value] = part.split('=', 2);
@@ -331,4 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       onPopupClose();
     }
   });
-});
+}
+
+document.addEventListener('DOMContentLoaded', search);
+NexT.plugins.localSearch = search;
