@@ -42,7 +42,7 @@
 ```
 
 - `mermaid` 插件使用时算作数学公式，即文章必须开启了 `mathjax`，开启方法：只需要在文章头部配置中加入 `mathjax: true` 即可，数学公式的渲染依赖于这个选项的开启
-- 依赖的第三方库有：`animate`, `pjax`, `ribbon.js`, `fontawesome`, `pace`，它们对应的 js 和 css 文件的引入均位于以下两个文件（如若 cdn 地址失效，需要手动修改）：
+- 依赖的第三方库有：`animate`, `pjax`, `fontawesome`, `pace`，它们对应的 js 和 css 文件的引入均位于以下两个文件（如若 cdn 地址失效，需要手动修改）：
   - `/layouts/_default/baseof.html` 文件的尾部
   - `/layouts/partials/head.html` 文件的尾部
 
