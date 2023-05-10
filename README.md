@@ -46,8 +46,4 @@
   - `/layouts/_default/baseof.html` 文件的尾部
   - `/layouts/partials/head.html` 文件的尾部
 
-### TODO
-
-亮色/暗色模式的代码显示存在问题
-
 ### 完
