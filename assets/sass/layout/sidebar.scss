@@ -239,6 +239,10 @@
     }
 
     a {
+      display: block;
+      margin: 4px 0;
+      padding: 1px 6px;
+      border: none;
       transition: all $transition-ease;
     }
   }
@@ -255,6 +259,9 @@
     ul,
     ol {
       display: none;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid $grey;
     }
 
     .active > ul,
@@ -272,15 +279,11 @@
     }
 
     .active > a {
-      border-bottom-color: $sidebar-highlight;
-      color: $sidebar-highlight;
-    }
-
-    .active-current > a {
       color: $sidebar-highlight;
 
-      &:hover {
-        color: $sidebar-highlight;
+      &.active-current {
+        background-color: $sidebar-highlight;
+        color: white;
       }
     }
   }
