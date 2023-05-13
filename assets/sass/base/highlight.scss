@@ -1,24 +1,43 @@
+.highlight {
+  position: relative;
+}
+
+.highlight pre {
+  margin: 0;
+}
+
+.highlight > .chroma {
+  margin-bottom: 20px;
+}
+
+.highlight > .chroma .lntd:first-child {
+  width: 20px;
+}
+
 .highlight:hover .copy-btn,
 pre:hover .copy-btn {
   opacity: 1;
 }
 
 .copy-btn {
-  color: $black-dim;
+  color: var(--text-color);
+  background-color: transparent;
   cursor: pointer;
-  line-height: 1.6;
   opacity: 0;
   padding: 2px 6px;
   position: absolute;
   transition: opacity $transition-ease;
-
-  background-color: $gainsboro;
-  background-image: linear-gradient(#fcfcfc, $gainsboro);
-  border: 1px solid #d5d5d5;
+  // background-color: $gainsboro;
+  // background-image: linear-gradient(#fcfcfc, $gainsboro);
+  border: none;
   border-radius: 3px;
-  font-size: $font-size-smaller;
   right: 4px;
   top: 8px;
+}
+
+.copy-btn > svg {
+  width: $font-size-larger;
+  height: $font-size-larger;
 }
 
 // Placeholder: $code-inline $code-block
@@ -54,65 +73,6 @@ kbd {
   font-family: inherit;
   padding: 0.1em 0.3em;
   white-space: nowrap;
-}
-
-// `highlight.line_number: false` && `highlight.wrap: false`
-// in Hexo config generates code.highlight elements
-figure.highlight {
-  @include code-block;
-  position: relative;
-
-  pre {
-    border: 0;
-    margin: 0;
-    padding: 10px 0;
-  }
-
-  table {
-    border: 0;
-    margin: 0;
-    width: auto;
-  }
-
-  td {
-    border: 0;
-    padding: 0;
-  }
-
-  figcaption {
-    background: var(--highlight-gutter-background);
-    color: var(--highlight-foreground);
-    display: flow-root;
-    font-size: $table-font-size;
-    line-height: 1.2;
-    padding: 0.5em;
-
-    a {
-      color: var(--highlight-foreground);
-      float: right;
-
-      &:hover {
-        border-bottom-color: var(--highlight-foreground);
-      }
-    }
-  }
-
-  .gutter {
-    @include disable-user-select;
-
-    pre {
-      background: var(--highlight-gutter-background);
-      color: var(--highlight-gutter-foreground);
-      padding-left: 10px;
-      padding-right: 10px;
-      text-align: right;
-    }
-  }
-
-  .code pre {
-    padding-left: 10px;
-    width: 100%;
-  }
 }
 
 // See https://github.com/hexojs/hexo-util/pull/229

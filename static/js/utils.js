@@ -81,45 +81,38 @@ NexT.utils = {
    * One-click copy code support.
    */
   registerCopyCode: function () {
-    let figure = document.querySelectorAll('figure.highlight');
-    if (figure.length === 0) figure = document.querySelectorAll('pre');
-    figure.forEach((element) => {
-      element.querySelectorAll('.code .line span').forEach((span) => {
-        span.classList.forEach((name) => {
-          span.classList.replace(name, `hljs-${name}`);
-        });
-      });
-      element.insertAdjacentHTML(
-        'beforeend',
-        '<div class="copy-btn"><i class="fa fa-copy fa-fw"></i></div>'
-      );
-      const button = element.querySelector('.copy-btn');
+    if (!navigator || !navigator.clipboard) return;
+    const svgCopy = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="currentColor" d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z"/><path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z"/></svg>`;
+    const svgCheck = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="currentColor" d="m14 21.414l-5-5.001L10.413 15L14 18.586L21.585 11L23 12.415l-9 8.999z"/><path fill="currentColor" d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2Zm0 26a12 12 0 1 1 12-12a12 12 0 0 1-12 12Z"/></svg>`;
+    document.querySelectorAll('pre > code').forEach((block) => {
+      // element.querySelectorAll('.code .line span').forEach((span) => {
+      //   span.classList.forEach((name) => {
+      //     span.classList.replace(name, `hljs-${name}`);
+      //   });
+      // });
+      if (block.children[0].className === 'lnt') return;
+      const button = document.createElement('button');
+      button.className = 'copy-btn'
+      button.type = 'button';
+      button.title = 'Copy';
+      button.innerHTML = svgCopy;
+      // lines.insertAdjacentHTML(
+      //   'beforeend',
+      //   '<div class="copy-btn"><i class="fa fa-copy fa-fw"></i></div>'
+      // );
       button.addEventListener('click', () => {
-        const lines = element.querySelector('.code') || element.querySelector('code');
-        const code = lines.innerText;
-        const ta = document.createElement('textarea');
-        ta.style.top = window.scrollY + 'px'; // Prevent page scrolling
-        ta.style.position = 'absolute';
-        ta.style.opacity = '0';
-        ta.readOnly = true;
-        ta.value = code;
-        document.body.append(ta);
-        ta.select();
-        ta.setSelectionRange(0, code.length);
-        ta.readOnly = false;
-        const result = document.execCommand('copy');
-        button.querySelector('i').className = result
-          ? 'fa fa-check-circle fa-fw'
-          : 'fa fa-times-circle fa-fw';
-        ta.blur(); // For iOS
-        button.blur();
-        document.body.removeChild(ta);
+        navigator.clipboard.writeText(block.innerText).then(
+          () => {
+            button.blur();
+            button.innerHTML = svgCheck;
+            block.addEventListener('mouseleave', () => {
+              setTimeout(() => button.innerHTML = svgCopy, 300);
+            })
+          }
+        )
       });
-      element.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-          button.querySelector('i').className = 'fa fa-copy fa-fw';
-        }, 300);
-      });
+      const pre = block.parentNode;
+      pre.parentNode.insertBefore(button, pre.nextSibling);
     });
   },
 
