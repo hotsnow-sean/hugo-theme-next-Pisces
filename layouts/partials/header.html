@@ -10,9 +10,7 @@
 
   <div class="site-meta">
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
       <h1 class="site-title">{{ .Site.Title }}</h1>
-      <i class="logo-line"></i>
     </a>
     {{ if .Site.Params.subtitle }}
     <p class="site-subtitle" itemprop="description">{{ .Site.Params.subtitle }}</p>
@@ -21,7 +19,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
-      <i class="fa fa-search fa-fw fa-lg"></i>
+      <div class="i-fa-solid-search icon-lg"></div>
     </div>
   </div>
 </div>
@@ -32,7 +30,7 @@
     {{ range .Site.Menus.main }}
     <li class="menu-item">
       <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . -}} class="menu-item-active" {{ end -}}
-        rel="section">{{ .Pre }}{{ or (i18n .Name) .Name }}
+        rel="section"><div class="{{ .Pre }} menu-item-icon"></div>{{ or (i18n .Name) .Name }}
         {{- $count := 0 -}}
         {{ if eq .Identifier "archives" }}{{ $count = (len (where $.Site.RegularPages "Type" "posts")) -}}
         {{ else if eq .Identifier "categories" }}{{ $count = (len $.Site.Taxonomies.categories) -}}
@@ -46,7 +44,7 @@
 
     <li class="menu-item menu-item-search">
       <a role="button" class="popup-trigger">
-        <i class="fa fa-search fa-fw"></i>{{ i18n "search" }}
+        <div class="i-fa-solid-search menu-item-icon"></div>{{ i18n "search" }}
       </a>
     </li>
   </ul>

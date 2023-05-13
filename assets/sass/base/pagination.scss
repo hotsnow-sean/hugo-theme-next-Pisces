@@ -18,12 +18,15 @@
   .page-number {
     @include page-number-basic;
     border-bottom: 0;
-    border-top: 1px solid $pagination-link-border;
     transition: border-color $transition-ease;
 
     &:hover {
       border-top-color: $pagination-link-hover-border;
     }
+  }
+
+  .page-number {
+    border-top: 1px solid $pagination-link-border;
   }
 
   @include mobile {

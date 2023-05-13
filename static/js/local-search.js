@@ -173,11 +173,11 @@ const search = () => {
     if (keywords.length === 1 && keywords[0] === '') {
       container.classList.add('no-result');
       container.innerHTML =
-        '<div class="search-result-icon"><i class="fa fa-search fa-5x"></i></div>';
+        '<div class="search-result-icon"><div class="i-fa-solid-search icon-5x"></div></div>';
     } else if (resultItems.length === 0) {
       container.classList.add('no-result');
       container.innerHTML =
-        '<div class="search-result-icon"><i class="far fa-frown fa-5x"></i></div>';
+        '<div class="search-result-icon"><div class="i-fa6-regular-face-frown icon-5x"></div></div>';
     } else {
       resultItems.sort((left, right) => {
         if (left.includedCount !== right.includedCount) {

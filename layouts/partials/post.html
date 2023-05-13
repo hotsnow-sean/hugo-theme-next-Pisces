@@ -29,13 +29,13 @@
     {{ partial "post/post-related" . }}
 
     <footer class="post-footer">
-      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-paw"></i>
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <div class="i-fa-solid-paw inline-icon"></div>
         感谢您的阅读-------------</div>
       {{ partial "post/post-copyright.html" . }}
 
       <div class="post-tags">
         {{ range (.GetTerms "tags") }}
-        <a href="{{ .Permalink }}" rel="tag"><i class="fa fa-tag"></i> {{ .LinkTitle }}</a>
+        <a href="{{ .Permalink }}" rel="tag"><div class="i-mdi-tag inline-icon"></div> {{ .LinkTitle }}</a>
         {{ end }}
       </div>
 
@@ -43,12 +43,12 @@
       <div class="post-nav">
         <div class="post-nav-item">
           {{ with .PrevInSection }}
-          <a rel="prev" href="{{.Permalink}}" title="{{.Title}}"><i class="fa fa-chevron-left"></i> {{.Title}}</a>
+          <a rel="prev" href="{{.Permalink}}" title="{{.Title}}"><div class="i-carbon-chevron-left inline-icon"></div> {{.Title}}</a>
           {{ end }}
         </div>
         <div class="post-nav-item">
           {{ with .NextInSection }}
-          <a rel="next" href="{{.Permalink}}" title="{{.Title}}">{{.Title}} <i class="fa fa-chevron-right"></i></a>
+          <a rel="next" href="{{.Permalink}}" title="{{.Title}}">{{.Title}} <div class="i-carbon-chevron-right inline-icon"></div></a>
           {{ end }}
         </div>
       </div>

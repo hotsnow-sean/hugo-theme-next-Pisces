@@ -15,7 +15,7 @@
     </li>
     <li class="post-copyright-license">
       <strong>{{ i18n "license_title" }}： </strong>
-      {{ $copyright := print `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a>` }}
+      {{ $copyright := print `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer"><span class="i-mdi-creative-commons icon-sm"></span>BY-NC-SA</a>` }}
       {{ printf (i18n "license_content") $copyright | safeHTML }}
     </li>
   </ul>

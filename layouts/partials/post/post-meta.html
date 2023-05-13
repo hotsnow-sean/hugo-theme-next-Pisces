@@ -1,8 +1,6 @@
 <div class="post-meta">
   <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="far fa-calendar"></i>
-    </span>
+    <span class="i-mdi-calendar-blank inline-icon"></span>
     <span class="post-meta-item-text">{{ i18n "posted" }}</span>
     <time title="{{ i18n "created" }}：{{ .Date.Format "2006-01-02 15:04:05" }}" itemprop="dateCreated datePublished"
       datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
@@ -10,9 +8,7 @@
 
   {{- if gt (sub .Lastmod.Unix .Date.Unix) 86400 }}
   <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="far fa-calendar-check"></i>
-    </span>
+    <span class="i-mdi-calendar-check inline-icon"></span>
     <span class="post-meta-item-text">{{ i18n "edited" }}</span>
     <time title="{{ i18n "modified" }}：{{ .Lastmod.Format "2006-01-02 15:04:05" }}" itemprop="dateModified"
       datetime="{{ .Lastmod }}">{{ .Lastmod.Format "2006-01-02" }}</time>
@@ -21,9 +17,7 @@
 
   {{- with (.GetTerms "categories") }}
   <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="far fa-folder"></i>
-    </span>
+    <span class="i-mdi-folder-outline inline-icon"></span>
     <span class="post-meta-item-text">{{ i18n "in" }}</span>
     {{- range $id, $val := . }}
     {{ if $id }}/{{ end -}}
