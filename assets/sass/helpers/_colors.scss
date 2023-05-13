@@ -149,6 +149,32 @@
     }
   }
 
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    width: 4px;
+    height: 4px;
+    background: #2c2c2c;
+    border-radius: 2em;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 4px;
+    height: 4px;
+    background: #9f9f9f;
+    border-radius: 2em;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d1d1d1;
+  }
+  * {
+    scrollbar-color: dark;
+  }
+  ::selection {
+    background-color: #AAA4;
+  }
+
   // syntax highlight (gruvbox)
   /* Background */ .bg { color: #ebdbb2; background-color: #282828; }
   /* PreWrapper */ .chroma { color: #ebdbb2; background-color: #282828; }
