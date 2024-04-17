@@ -5,4 +5,29 @@
   </span>
   <span class="author" itemprop="copyrightHolder">{{ .Site.Params.author }}</span>
 </div>
+{{- if .Site.Params.busuanzi_count.enable }}
+<div class="busuanzi-count">
+  {{- if .Site.Params.busuanzi_count.total_visitors }}
+  <span class="post-meta-item" id="busuanzi_container_site_uv">
+    <span class="post-meta-item-icon">
+      <div class="{{.Site.Params.busuanzi_count.total_visitors_icon}} inline-icon"></div>
+    </span>
+    <span class="site-uv" title="test">
+      访客人数：<span id="busuanzi_value_site_uv"></span>人
+    </span>
+  </span>
+  {{ end -}}
+
+  {{- if .Site.Params.busuanzi_count.total_views }}
+  <span class="post-meta-item" id="busuanzi_container_site_pv">
+    <span class="post-meta-item-icon">
+      <div class="{{.Site.Params.busuanzi_count.total_views_icon}} inline-icon"></div>
+    </span>
+    <span class="site-pv" title="test">
+      浏览总量：<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </span>
+  {{ end -}}
+</div>
+{{ end -}}
 <div>本站基于 Hugo 框架 + Next 主题</div>

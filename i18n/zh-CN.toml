@@ -49,6 +49,8 @@ other = "创建时间"
 other = "修改时间"
 [in]
 other = "分类于"
+[reading_times]
+other = "阅读次数"
 [read_more]
 other = "阅读全文"
 [untitled]

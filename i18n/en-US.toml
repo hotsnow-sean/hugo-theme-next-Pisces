@@ -48,6 +48,8 @@ other = "Created"
 other = "Modified"
 [in]
 other = "In"
+[reading_times]
+other = "Reading Times"
 [read_more]
 other = "Read more"
 [untitled]

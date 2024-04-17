@@ -343,6 +343,30 @@
   height: 1.2em;
 }
 
+.i-carbon-view-filled {
+  --un-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjQiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTMwLjk0IDE1LjY2QTE2LjY5IDE2LjY5IDAgMCAwIDE2IDVBMTYuNjkgMTYuNjkgMCAwIDAgMS4wNiAxNS42NmExIDEgMCAwIDAgMCAuNjhBMTYuNjkgMTYuNjkgMCAwIDAgMTYgMjdhMTYuNjkgMTYuNjkgMCAwIDAgMTQuOTQtMTAuNjZhMSAxIDAgMCAwIDAtLjY4TTE2IDIyLjVhNi41IDYuNSAwIDEgMSA2LjUtNi41YTYuNTEgNi41MSAwIDAgMS02LjUgNi41Ii8+PC9zdmc+");
+  -webkit-mask: var(--un-icon) no-repeat;
+  mask: var(--un-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.i-carbon-user-filled {
+  --un-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTYgMzBoMjB2LTVhNy4wMDggNy4wMDggMCAwIDAtNy03aC02YTcuMDA4IDcuMDA4IDAgMCAwLTcgN3pNOSA5YTcgNyAwIDEgMCA3LTdhNyA3IDAgMCAwLTcgNyIvPjwvc3ZnPg==");
+  -webkit-mask: var(--un-icon) no-repeat;
+  mask: var(--un-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
+
 .i-mdi-calendar {
   --un-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 24 24' width='1.2em' height='1.2em' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='currentColor' d='M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z'/%3E%3C/svg%3E");
   -webkit-mask: var(--un-icon) no-repeat;
@@ -417,6 +441,18 @@
 
 .i-mdi-close-circle {
   --un-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 24 24' width='1.2em' height='1.2em' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='currentColor' d='M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7Z'/%3E%3C/svg%3E");
+  -webkit-mask: var(--un-icon) no-repeat;
+  mask: var(--un-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.i-mdi-eye {
+  --un-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEyIDlhMyAzIDAgMCAwLTMgM2EzIDMgMCAwIDAgMyAzYTMgMyAwIDAgMCAzLTNhMyAzIDAgMCAwLTMtM20wIDhhNSA1IDAgMCAxLTUtNWE1IDUgMCAwIDEgNS01YTUgNSAwIDAgMSA1IDVhNSA1IDAgMCAxLTUgNW0wLTEyLjVDNyA0LjUgMi43MyA3LjYxIDEgMTJjMS43MyA0LjM5IDYgNy41IDExIDcuNXM5LjI3LTMuMTEgMTEtNy41Yy0xLjczLTQuMzktNi03LjUtMTEtNy41WiIvPjwvc3ZnPg==");
   -webkit-mask: var(--un-icon) no-repeat;
   mask: var(--un-icon) no-repeat;
   -webkit-mask-size: 100% 100%;
