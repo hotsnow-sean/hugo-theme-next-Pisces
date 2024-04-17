@@ -27,14 +27,4 @@
     {{ end }}
   </span>
   {{- end }}
-
-  {{- if and .Site.Params.busuanzi_count.enable .Site.Params.busuanzi_count.post_views }}
-    <span class="post-meta-item" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <div class="{{.Site.Params.busuanzi_count.post_views_icon}} inline-icon"></div>
-      </span>
-      <span class="post-meta-item-text">{{ i18n "reading_times" }}</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-  {{- end }}
 </div>
