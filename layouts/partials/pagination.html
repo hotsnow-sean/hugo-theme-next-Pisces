@@ -2,7 +2,7 @@
 <nav class="pagination">
   {{ if .HasPrev -}}
   <a href="{{ .Prev.URL }}" class="extend prev" rel="prev">
-    <div class="i-fa-solid-angle-left inline-icon"></div>
+    <span class="i-fa-solid-angle-left inline-icon"></span>
   </a>
   {{ end -}}
   {{ range .Pagers -}}
@@ -14,7 +14,7 @@
   {{ end -}}
   {{ if .HasNext -}}
   <a href="{{ .Next.URL }}" class="extend next" rel="next">
-    <div class="i-fa-solid-angle-right inline-icon"></div>
+    <span class="i-fa-solid-angle-right inline-icon"></span>
   </a>
   {{ end -}}
 </nav>

@@ -72,7 +72,7 @@
           {{- range .Site.Params.social }}
           <span class="links-of-author-item">
             <a href="{{.url}}" title="{{.name}} → {{.url}}" target="_blank" rel="noopener noreferrer">
-              <div class="{{.icon}} inline-icon"></div>
+              <span class="{{.icon}} inline-icon"></span>
               {{ .name }}
             </a>
           </span>
@@ -90,7 +90,7 @@
         {{- if .Site.Params.links }}
         <div class="links-of-blogroll site-overview-item animated">
           <div class="links-of-blogroll-title">
-            <div class="i-carbon-earth-filled inline-icon"></div>
+            <span class="i-carbon-earth-filled inline-icon"></span>
             {{ .Site.Params.links_title }}
           </div>
           <ul class="links-of-blogroll-list">
