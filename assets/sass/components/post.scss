@@ -429,6 +429,22 @@
 // See https://caniuse.com/#feat=flexbox-gap
 .post-footer {
   @include flex-column;
+
+  .post-end-thank {
+    text-align:center;
+    color: #ccc;
+    font-size:14px;
+  }
+
+  @media (min-width: 400px) {
+    .post-end-thank:before,
+    .post-end-thank:after {
+      content: '------------'; /* 你想要添加的短横线 */
+      display: inline-block;
+      color: inherit;
+      margin: 0 8px; /* 文本与短横线之间的间距 */
+    }
+  }
 }
 
 .post-eof {
